@@ -1,0 +1,29 @@
+[
+    {
+        "label": "Dashboard",
+        "icon": "fa fa-location-arrow",
+        "url": "/"
+    },
+    {
+        "label": "Elements",
+        "icon": "fa fa-flask",
+        "sub": [
+            {
+                "label": "Icon Packs",
+                "url": "/"
+            },
+            {
+                "label": "Grid",
+                "url": "/"
+            },
+            {
+                "label": "Typography",
+                "url": "/"
+            },
+            {
+                "label": "Navigation",
+                "url": "/"
+            }
+        ]
+    }
+]
