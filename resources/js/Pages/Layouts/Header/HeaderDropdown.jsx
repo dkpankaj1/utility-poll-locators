@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import HeaderDropdownItem from './HeaderDropdownItem'
-
+import { Link } from '@inertiajs/react'
 function HeaderDropdown(props) {
 
     const [open, setOpen] = useState(false)
@@ -35,9 +35,10 @@ function HeaderDropdown(props) {
                         <i className="far fa-fw fa-building me-1"></i> Settings
                     </a>
                     <div role="separator" className="dropdown-divider"></div>
-                    <a className="dropdown-item"href="#">
+                    
+                    <Link as='button' method='post' href={route('logout')} className="dropdown-item">
                         <i className="far fa-fw fa-arrow-alt-circle-left me-1"></i> Sign Out
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

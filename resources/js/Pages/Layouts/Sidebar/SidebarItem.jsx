@@ -1,22 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link, usePage } from '@inertiajs/react'
 
-function Sidebaritem({item}) {
+function SidebarItem({ item }) {
     const [open, setOpen] = useState(false)
+    const { url } = usePage()
 
+    // Check if the current URL matches any subitem URL
+    const isActive = item.sub && item.sub.some(subitem => url === subitem.url)
+    useEffect(()=>{
+        isActive && setOpen(true)
+        
+    },[])
 
     if (item.sub) {
         return (
             <li className={`nav-main-item ${open ? "open" : ""}`} onClick={() => setOpen(!open)}>
-                <a className="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                <a className="nav-main-link nav-main-link-submenu" href="#">
                     <i className={`nav-main-link-icon ${item.icon}`}></i>
                     <span className="nav-main-link-name">{item.label}</span>
                 </a>
                 <ul className="nav-main-submenu">
                     {item.sub.map((subitem, index) => (
                         <li className="nav-main-item" key={index}>
-                            <a className="nav-main-link" href={subitem.url} >
+                            <Link className={`nav-main-link ${url === subitem.url ? "active" : ""}`} href={subitem.url} >
                                 <span className="nav-main-link-name">{subitem.label}</span>
-                            </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>
@@ -25,14 +33,14 @@ function Sidebaritem({item}) {
     } else {
         return (
             <li className={`nav-main-item`}>
-                <a className="nav-main-link" href={item.url}>
+                <Link className="nav-main-link" href={item.url}>
                     <i className={`nav-main-link-icon ${item.icon}`} ></i>
                     <span className="nav-main-link-name">{item.label}</span>
-                </a>
+                </Link>
             </li>
         )
     }
 
 }
 
-export default Sidebaritem
+export default SidebarItem

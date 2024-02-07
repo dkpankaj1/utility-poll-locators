@@ -2,7 +2,7 @@
     {
         "label": "Dashboard",
         "icon": "fa fa-location-arrow",
-        "url": "/"
+        "url": "/dashboard"
     },
     {
         "label": "Elements",
@@ -23,6 +23,20 @@
             {
                 "label": "Navigation",
                 "url": "/"
+            }
+        ]
+    },
+    {
+        "label": "Users",
+        "icon": "fa fa-user",
+        "sub": [
+            {
+                "label": "Add",
+                "url": "/users/create"
+            },
+            {
+                "label": "Users",
+                "url": "/users"
             }
         ]
     }

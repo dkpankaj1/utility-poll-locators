@@ -5,6 +5,20 @@ import '../css/dashmix.min.css'
 import '../css/app.css'
 
 createInertiaApp({
+    progress: {
+        // The delay after which the progress bar will appear, in milliseconds...
+        delay: 250,
+
+        // The color of the progress bar...
+        // color: '#29d',
+        color: '#F00',
+
+        // Whether to include the default NProgress styles...
+        includeCSS: true,
+
+        // Whether the NProgress spinner will be shown...
+        showSpinner: false,
+    },
     resolve: name => {
         const pages = import.meta.glob('./Pages/**/*.jsx', { eager: true })
         return pages[`./Pages/${name}.jsx`]
