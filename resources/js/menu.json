@@ -5,6 +5,20 @@
         "url": "/dashboard"
     },
     {
+        "label": "Zonal",
+        "icon": "fa fa-map",
+        "sub": [
+            {
+                "label": "Add",
+                "url": "/zonals/create"
+            },
+            {
+                "label": "List",
+                "url": "/zonals"
+            }
+        ]
+    },
+    {
         "label": "Users",
         "icon": "fa fa-user",
         "sub": [
@@ -13,7 +27,7 @@
                 "url": "/users/create"
             },
             {
-                "label": "Users",
+                "label": "List",
                 "url": "/users"
             }
         ]

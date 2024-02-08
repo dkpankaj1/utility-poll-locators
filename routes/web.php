@@ -3,8 +3,8 @@
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\LoginController;
 use App\Http\Controllers\Web\UserController;
+use App\Http\Controllers\Web\ZonalController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +18,6 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
     return to_route('login');
 });
 
@@ -30,5 +29,6 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::resource('users',UserController::class);
+    Route::resource('zonals',ZonalController::class);
     Route::post('logout',[LoginController::class,'destroy'])->name('logout');
 });

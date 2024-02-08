@@ -1,13 +1,14 @@
-import React from 'react'
+import React,{useState} from 'react'
 
-function Model() {
+function Model(props) {
+    const [show,setShow] = useState(props.show)
     return (
-        <div className="modal fade" >
+        <div className={`modal ${show ? 'd-block' : ''}`} >
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <div className="modal-header bg-danger text-light">
+                        <h5 className="modal-title" id="exampleModalLongTitle">Confirm Delete</h5>
+                        <button type="button" className="btn text-light" onClick={() => setShow(false)}>
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>

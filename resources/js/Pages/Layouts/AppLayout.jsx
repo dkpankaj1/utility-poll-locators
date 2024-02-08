@@ -1,11 +1,11 @@
 import React, { useState, createContext, useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
 import Sidebar from './Sidebar/Sidebar'
 import Header from './Header/Header'
 import Main from './Main/Main'
 import Footer from './Footer/Footer'
 import { usePage } from '@inertiajs/react'
-import Toaster from '../Components/Toaster'
-import Model from '../Components/Model'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const LayoutContext = createContext(null)
 
@@ -49,6 +49,11 @@ function AppLayout({ children }) {
         };
     }, []);
 
+    useEffect(() => {
+        flash.success && toast.success(flash.success)
+        flash.danger && toast.error(flash.danger)
+    },[flash])
+
     return (
         <LayoutContext.Provider value={context}>
             <div id="page-container" className={`sidebar-dark enable-page-overlay side-scroll page-header-fixed  ${openXsSidebar ? 'sidebar-o-xs' : ''} ${openSidebar ? 'sidebar-o' : ''}  ${darkMode ? "page-header-dark dark-mode" : ""}`}>
@@ -63,10 +68,7 @@ function AppLayout({ children }) {
                 {/* main content::begin */}
                 <Main>
 
-                    {flash.success && (<Toaster show={true} type={"success"} title="Success" message={flash.success} />)}
 
-                    {flash.danger && (<Toaster show={true} type={"danger"} title="Error" message={flash.danger} />)}
-                    <Model/>
 
                     {children}
 
@@ -76,6 +78,10 @@ function AppLayout({ children }) {
                 {/* footer::begin */}
                 <Footer />
                 {/* footer::end */}
+
+                {/* toast container and other model :: Begin */}
+                <ToastContainer/>
+                {/* toast container and other model :: End */}
             </div>
         </LayoutContext.Provider>
 

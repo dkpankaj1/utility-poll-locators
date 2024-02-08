@@ -31,9 +31,9 @@ class UserController extends Controller
         ];
         try {
             User::create($user);
-            return redirect()->route('users.index')->with('success','User created successfully');
+            return redirect()->route('users.index')->with('success', 'User created successfully');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+            return redirect()->back()->with('danger', $e->getMessage());
         }
     }
 
@@ -47,7 +47,7 @@ class UserController extends Controller
         return Inertia::render('Users/Edit', ['user' => $user]);
     }
 
-    public function update(UserUpdateRequest $request,User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
         try {
             $user->update([
@@ -55,14 +55,23 @@ class UserController extends Controller
                 'email' => $request->email,
                 'status' => $request->status
             ]);
-            return redirect()->route('users.index')->with('success','User updated successfully');
+            return redirect()->route('users.index')->with('success', 'User updated successfully');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', $th->getMessage());
+            return redirect()->back()->with('danger', $th->getMessage());
         }
 
     }
-    public function destroy()
+    public function destroy(User $user)
     {
 
+        if($user->id == 1)
+            return redirect()->back()->with('danger', "User Could not be deleted");
+
+        try {
+            $user->delete();
+            return redirect()->back()->with('success', 'User Delete successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('danger', $th->getMessage());
+        }
     }
 }

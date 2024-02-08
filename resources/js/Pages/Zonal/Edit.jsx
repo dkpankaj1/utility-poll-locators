@@ -1,9 +1,9 @@
 import React from 'react'
 import AppLayout from '../Layouts/AppLayout'
 import Breadcrumb from '../Layouts/Breadcrumb/Breadcrumb'
-import { Head,useForm } from '@inertiajs/react'
+import { Head, useForm } from '@inertiajs/react'
 
-function Create() {
+function Edit({zonal}) {
     const breadcrumb = [
         {
             label: "Dashboard",
@@ -11,8 +11,8 @@ function Create() {
             active: false
         },
         {
-            label: "Users",
-            url: '/users',
+            label: "Zonal",
+            url: '/zonals',
             active: false
         },
         {
@@ -21,17 +21,16 @@ function Create() {
         }
     ]
 
-    const { data, setData, post, processing,progress,errors } = useForm({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-        status : false
+    const { data, setData, post, processing, progress, errors,reset } = useForm({
+        _method : "PUT",
+        name: zonal.name,
+        description: zonal.description,
+        status: zonal.status
     })
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        post(route('users.store'))
+        post(route('zonals.update',zonal))
     }
     return (
         <AppLayout>
@@ -43,6 +42,7 @@ function Create() {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-12 col-sm-6">
+                                {/* form */}
                                 <form className="my-5" onSubmit={handleSubmit}>
                                     <div className="row mb-4">
                                         <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Name</label>
@@ -52,30 +52,17 @@ function Create() {
                                         </div>
                                     </div>
                                     <div className="row mb-4">
-                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Email</label>
+                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Description</label>
                                         <div className="col-sm-8">
-                                            <input type="email" className="form-control" value={data.email} onChange={(e) => setData('email', e.target.value)} placeholder="Enter Email.." />
-                                            {errors.email && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.email}</div>}
+                                            <textarea rows={5} className="form-control" value={data.description} onChange={(e) => setData('description', e.target.value)} placeholder="Enter Description.." />
+                                            {errors.description && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.description}</div>}
                                         </div>
                                     </div>
-                                    <div className="row mb-4">
-                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-password">Password</label>
-                                        <div className="col-sm-8">
-                                            <input type="password" className="form-control" value={data.password} onChange={(e) => setData('password', e.target.value)} placeholder="Enter Password.." />
-                                            {errors.password && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.password}</div>}
-                                        </div>
-                                    </div>
-                                    <div className="row mb-4">
-                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-password">Confirm Password</label>
-                                        <div className="col-sm-8">
-                                            <input type="password" className="form-control" value={data.password_confirmation} onChange={(e) => setData('password_confirmation', e.target.value)}  placeholder="Confirm Password.." />
-                                        </div>
-                                    </div>
-
+                                    
                                     <div className="row mb-4">
                                         <label className="col-sm-4 col-form-label" htmlFor="example-hf-password">Status</label>
                                         <div className="col-sm-8">
-                                            <input className="form-check-input" type="checkbox" defaultChecked={data.status} onChange={(e) => setData('status', e.target.checked)}/>
+                                            <input className="form-check-input" type="checkbox" defaultChecked={data.status} onChange={(e) => setData('status', e.target.checked)} />
                                             {errors.status && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.status}</div>}
                                         </div>
                                     </div>
@@ -83,7 +70,7 @@ function Create() {
                                     <div className="row mb-4">
                                         <hr />
                                         <div className="col-sm-8">
-                                            <button type="submit" className="btn btn-primary px-4">{processing?"Loading..":"Save"}</button>
+                                            <button type="submit" className="btn btn-primary px-4">{processing ? "Loading.." : "Update"}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -96,4 +83,4 @@ function Create() {
     )
 }
 
-export default Create
+export default Edit
