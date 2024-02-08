@@ -44,7 +44,8 @@ function Index({ users }) {
                                                     </td>
                                                     <td>{user.email}</td>
                                                     <td>
-                                                        <span className="badge bg-danger">Disabled</span>
+                                                        {user.status ? <span className="badge bg-success">Enabled</span>  : <span className="badge bg-danger">Disabled</span> }
+                                                        
                                                     </td>
                                                     <td className="text-center">
                                                         <div className="btn-group">

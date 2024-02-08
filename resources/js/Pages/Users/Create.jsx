@@ -76,6 +76,7 @@ function Create() {
                                         <label className="col-sm-4 col-form-label" htmlFor="example-hf-password">Status</label>
                                         <div className="col-sm-8">
                                             <input className="form-check-input" type="checkbox" defaultChecked={data.status} onChange={(e) => setData('status', e.target.checked)}/>
+                                            {errors.status && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.status}</div>}
                                         </div>
                                     </div>
 

@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
 import HeaderDropdownItem from './HeaderDropdownItem'
-import { Link } from '@inertiajs/react'
+import { Link,useForm } from '@inertiajs/react'
 function HeaderDropdown(props) {
 
+    const {post,processing} = useForm()
     const [open, setOpen] = useState(false)
     const sidebarOpenStyle = {
         position: "absolute",
         inset: " 0px 0px auto auto",
         margin: "0px",
         transform: "translate(0px, 40px)"
+    }
+
+    const handleLogout = (e) => {
+        e.preventDefault()
+        post(route('logout'))
     }
 
     return (
@@ -36,8 +42,8 @@ function HeaderDropdown(props) {
                     </a>
                     <div role="separator" className="dropdown-divider"></div>
                     
-                    <Link as='button' method='post' href={route('logout')} className="dropdown-item">
-                        <i className="far fa-fw fa-arrow-alt-circle-left me-1"></i> Sign Out
+                    <Link as='button' onClick={handleLogout} className="dropdown-item">
+                        <i className="far fa-fw fa-arrow-alt-circle-left me-1"></i> {processing ? "Loading.." :"Sign Out"}
                     </Link>
                 </div>
             </div>

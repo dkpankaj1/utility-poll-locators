@@ -5,28 +5,6 @@
         "url": "/dashboard"
     },
     {
-        "label": "Elements",
-        "icon": "fa fa-flask",
-        "sub": [
-            {
-                "label": "Icon Packs",
-                "url": "/"
-            },
-            {
-                "label": "Grid",
-                "url": "/"
-            },
-            {
-                "label": "Typography",
-                "url": "/"
-            },
-            {
-                "label": "Navigation",
-                "url": "/"
-            }
-        ]
-    },
-    {
         "label": "Users",
         "icon": "fa fa-user",
         "sub": [

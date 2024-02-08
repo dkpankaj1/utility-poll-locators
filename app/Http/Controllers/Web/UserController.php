@@ -27,6 +27,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'status' => $request->status
         ];
         try {
             User::create($user);
@@ -51,7 +52,8 @@ class UserController extends Controller
         try {
             $user->update([
                 'name' => $request->name,
-                'email' => $request->email
+                'email' => $request->email,
+                'status' => $request->status
             ]);
             return redirect()->route('users.index')->with('success','User updated successfully');
         } catch (\Throwable $th) {

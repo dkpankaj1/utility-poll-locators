@@ -25,7 +25,7 @@ function Edit({ user }) {
         _method : "PUT",
         name: user.name,
         email: user.email,
-        status : false
+        status : user.status
     })
 
     const handleSubmit = (e) => {
