@@ -12,4 +12,5 @@ Route::post('login', [LoginController::class, "store"]);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('zonals',ZonalController::class)->only(['index','show']);
+    Route::post('logout',LoginController::class,'destroy');
 });
