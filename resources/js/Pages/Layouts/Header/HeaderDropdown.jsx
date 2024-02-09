@@ -31,7 +31,7 @@ function HeaderDropdown(props) {
                    {props.title}
                 </div>
                 <div className="p-2">
-                    <HeaderDropdownItem title="Profile" icon="far fa-fw fa-user" href="/profile" />
+                    {/* <HeaderDropdownItem title="Profile" icon="far fa-fw fa-user" href="/profile" />
                     <HeaderDropdownItem title="Inbox" icon="far fa-fw fa-envelope" href="/Inbox" />
                     <HeaderDropdownItem title="Invoices" icon="far fa-fw fa-file-alt" href="/Invoices" />
 
@@ -40,7 +40,7 @@ function HeaderDropdown(props) {
                     <a className="dropdown-item"href="#" data-toggle="layout" data-action="side_overlay_toggle">
                         <i className="far fa-fw fa-building me-1"></i> Settings
                     </a>
-                    <div role="separator" className="dropdown-divider"></div>
+                    <div role="separator" className="dropdown-divider"></div> */}
                     
                     <Link as='button' onClick={handleLogout} className="dropdown-item">
                         <i className="far fa-fw fa-arrow-alt-circle-left me-1"></i> {processing ? "Loading.." :"Sign Out"}
