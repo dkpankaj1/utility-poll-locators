@@ -24,9 +24,9 @@ function Edit({ zonals,utilityPoll,zonalRoute }) {
 
     const { data, setData, post, processing, errors } = useForm({
         _method : "PUT",
-        title: utilityPoll.title,
+        pole: utilityPoll.pole,
         zonal: utilityPoll.route_line.zonal_id,
-        landmark: utilityPoll.landmarks,
+        line: utilityPoll.line,
         latitude:utilityPoll.latitude,
         longitude: utilityPoll.longitude,
         route_lines: utilityPoll.route_line_id,
@@ -53,9 +53,10 @@ function Edit({ zonals,utilityPoll,zonalRoute }) {
 
     const showPosition = (position) => {
         setData({
-            title: data.title,
+            _method : data._method,
+            pole: data.pole,
             zonal: data.zonal,
-            landmark: data.landmark,
+            line: data.line,
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
             route_lines: data.route_lines,
@@ -70,7 +71,7 @@ function Edit({ zonals,utilityPoll,zonalRoute }) {
     return (
         <AppLayout>
             <Breadcrumb items={breadcrumb} />
-            <Head title='Users - Create | Dashboard'></Head>
+            <Head poll='Users - Create | Dashboard'></Head>
 
             <div className="content">
                 <div className="card">
@@ -109,10 +110,23 @@ function Edit({ zonals,utilityPoll,zonalRoute }) {
                                     </div>
 
                                     <div className="row mb-4">
-                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Title</label>
+                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Line</label>
                                         <div className="col-sm-8">
-                                            <input type="text" className="form-control" placeholder="Enter Name.." value={data.title} onChange={(e) => setData('title', e.target.value)} />
-                                            {errors.title && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.title}</div>}
+                                            <select className="form-select" defaultValue={data.line} onChange={(e) => setData('line', e.target.value)}>
+                                                <option value="">-- Select --</option>
+                                                <option value="up-line">Up-Line</option>
+                                                <option value="down-line">Down-Line</option>
+
+                                            </select>
+                                            {errors.line && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.line}</div>}
+                                        </div>
+                                    </div>
+
+                                    <div className="row mb-4">
+                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Poll Number</label>
+                                        <div className="col-sm-8">
+                                            <input type="text" className="form-control" placeholder="Enter Poll Number.." value={data.pole} onChange={(e) => setData('pole', e.target.value)} />
+                                            {errors.pole && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.pole}</div>}
                                         </div>
                                     </div>
 
@@ -136,13 +150,6 @@ function Edit({ zonals,utilityPoll,zonalRoute }) {
                                         </div>
                                     </div>
 
-                                    <div className="row mb-4">
-                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Landmark</label>
-                                        <div className="col-sm-8">
-                                            <input type="text" className="form-control" placeholder="Enter Landmark.." value={data.landmark} onChange={(e) => setData('landmark', e.target.value)} />
-                                            {errors.landmark && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.landmark}</div>}
-                                        </div>
-                                    </div>
 
                                     <div className="row mb-4">
                                         <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Description</label>

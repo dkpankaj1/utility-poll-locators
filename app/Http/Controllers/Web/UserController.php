@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        return Inertia::render('Users/Index', ['users' => User::all()]);
+        return Inertia::render('Users/Index', ['users' => User::latest()->get()]);
     }
 
     public function create()

@@ -17,7 +17,7 @@ class RouteLineController extends Controller
      */
     public function index()
     {
-        return Inertia::render('RouteLines/Index', ['routeLines' => RouteLine::all()]);
+        return Inertia::render('RouteLines/Index', ['routeLines' => RouteLine::latest()->get()]);
     }
 
     /**

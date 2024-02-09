@@ -3,7 +3,6 @@ import AppLayout from '../Layouts/AppLayout'
 import { Head, Link } from '@inertiajs/react'
 import Breadcrumb from '../Layouts/Breadcrumb/Breadcrumb'
 function Index({ utilityPolls }) {
-    console.log(utilityPolls);
     const breadcrumb = [
         {
             label: "Dashboard",
@@ -30,8 +29,8 @@ function Index({ utilityPolls }) {
                             <table className="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>Title</th>
-                                        <th>Landmarks</th>
+                                        <th>Pole</th>
+                                        <th>Line</th>
                                         <th>Latitude</th>
                                         <th>Longitude</th>
                                         <th>Route line</th>
@@ -47,23 +46,25 @@ function Index({ utilityPolls }) {
                                             return (
                                                 <tr key={index}>
                                                     <td className="fw-semibold">
-                                                        {utilityPoll.title}
+                                                        {utilityPoll.pole}
                                                     </td>
-                                                    <td>{utilityPoll.landmarks}</td>
+                                                    <td>{utilityPoll.line}</td>
                                                     <td>{utilityPoll.latitude}</td>
                                                     <td>{utilityPoll.longitude}</td>
                                                     <td>{utilityPoll.route_line.name}</td>
                                                     <td>{utilityPoll.created_by.name}</td>
-                                                    <td>{utilityPoll.updated_by || "null"}</td>
-                                                    <td>{utilityPoll.status}</td>
+                                                    <td>{utilityPoll.updated_by?.name || "null"}</td>
+                                                    <td>
+                                                    {utilityPoll.status ? <span className="badge bg-success">Active</span>  : <span className="badge bg-danger">InActive</span> }
+                                                    </td>
                                                     <td className="text-center">
                                                         <div className="btn-group">
                                                             <Link href={route('utility-polls.edit', utilityPoll)} type="button" className="btn btn-sm btn-alt-secondary">
                                                                 <i className="fa fa-pencil-alt"></i>
                                                             </Link>
-                                                            {/* <Link as="button" method='delete' href={route('utility-polls.destroy',utilityPoll)} className="btn btn-sm btn-alt-secondary">
+                                                            <Link as="button" method='delete' href={route('utility-polls.destroy',utilityPoll)} className="btn btn-sm btn-alt-secondary">
                                                                 <i className="fa fa-times"></i>
-                                                            </Link> */}
+                                                            </Link>
                                                         </div>
                                                     </td>
                                                 </tr>

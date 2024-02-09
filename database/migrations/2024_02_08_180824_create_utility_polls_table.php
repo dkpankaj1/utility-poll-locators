@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('utility_polls', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('landmarks');
+            $table->string('pole');
+            $table->string('line');
             $table->decimal('latitude',10,8);
             $table->decimal('longitude',10,8);
             $table->string('description');

@@ -13,7 +13,7 @@ class ZonalController extends Controller
 {
     public function index()
     {
-        $zonals = Zonal::all();
+        $zonals = Zonal::latest()->get();
         return Inertia::render('Zonal/Index',['zonals' => $zonals]);
     }
 
@@ -42,7 +42,7 @@ class ZonalController extends Controller
                 'description' => $request->description,
                 'status' => $request->status
             ]);
-            return redirect()->back()->with('success', 'Zonal created successfully');
+            return redirect()->route('zonals.index')->with('success', 'Zonal created successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('danger', $e->getMessage());
         }
@@ -82,7 +82,7 @@ class ZonalController extends Controller
                 'description' => $request->description,
                 'status' => $request->status
             ]);
-            return redirect()->back()->with('success', 'Zonal Update successfully');
+            return redirect()->route('zonals.index')->with('success', 'Zonal Update successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('danger', $e->getMessage());
         }

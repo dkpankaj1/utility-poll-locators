@@ -5,6 +5,7 @@ import { Head, useForm } from '@inertiajs/react'
 
 function Create({ zonals }) {
     const [routeLines, setRouteLines] = useState([])
+    
     const breadcrumb = [
         {
             label: "Dashboard",
@@ -12,8 +13,8 @@ function Create({ zonals }) {
             active: false
         },
         {
-            label: "Utility Poll",
-            url: '/utility-polls',
+            label: "Utility pole",
+            url: '/utility-poles',
             active: false
         },
         {
@@ -23,9 +24,9 @@ function Create({ zonals }) {
     ]
 
     const { data, setData, post, processing, errors } = useForm({
-        title: '',
+        pole: '',
         zonal: '',
-        landmark: '',
+        line: '',
         latitude: '',
         longitude: '',
         route_lines: '',
@@ -52,9 +53,9 @@ function Create({ zonals }) {
 
     const showPosition = (position) => {
         setData({
-            title: data.title,
+            pole: data.pole,
             zonal: data.zonal,
-            landmark: data.landmark,
+            line: data.line,
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
             route_lines: data.route_lines,
@@ -62,14 +63,16 @@ function Create({ zonals }) {
             status: data.status,
         })
     }
+
     const handleZonalChange = (e) => {
         setData('zonal', e.target.value)
         getRoute(e.target.value)
     }
+
     return (
         <AppLayout>
             <Breadcrumb items={breadcrumb} />
-            <Head title='Users - Create | Dashboard'></Head>
+            <Head title='Utility pole - Create | Dashboard'></Head>
 
             <div className="content">
                 <div className="card">
@@ -108,10 +111,23 @@ function Create({ zonals }) {
                                     </div>
 
                                     <div className="row mb-4">
-                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Title</label>
+                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Line</label>
                                         <div className="col-sm-8">
-                                            <input type="text" className="form-control" placeholder="Enter Name.." value={data.title} onChange={(e) => setData('title', e.target.value)} />
-                                            {errors.title && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.title}</div>}
+                                            <select className="form-select" onChange={(e) => setData('line', e.target.value)}>
+                                                <option value="">-- Select --</option>
+                                                <option value="up-line">Up-Line</option>
+                                                <option value="down-line">Down-Line</option>
+
+                                            </select>
+                                            {errors.line && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.line}</div>}
+                                        </div>
+                                    </div>
+
+                                    <div className="row mb-4">
+                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">pole Number</label>
+                                        <div className="col-sm-8">
+                                            <input type="text" className="form-control" placeholder="Enter pole Number.." value={data.pole} onChange={(e) => setData('pole', e.target.value)} />
+                                            {errors.pole && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.pole}</div>}
                                         </div>
                                     </div>
 
@@ -132,14 +148,6 @@ function Create({ zonals }) {
 
                                             {errors.latitude && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.latitude}</div>}
                                             {errors.longitude && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.longitude}</div>}
-                                        </div>
-                                    </div>
-
-                                    <div className="row mb-4">
-                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Landmark</label>
-                                        <div className="col-sm-8">
-                                            <input type="text" className="form-control" placeholder="Enter Landmark.." value={data.landmark} onChange={(e) => setData('landmark', e.target.value)} />
-                                            {errors.landmark && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.landmark}</div>}
                                         </div>
                                     </div>
 

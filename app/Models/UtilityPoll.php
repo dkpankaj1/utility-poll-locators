@@ -9,8 +9,8 @@ class UtilityPoll extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
-        'landmarks',
+        'pole',
+        'line',
         'latitude',
         'longitude',
         'description',
@@ -24,12 +24,11 @@ class UtilityPoll extends Model
     {
         return $this->belongsTo(RouteLine::class,'route_line_id');
     }
-
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
-    public function updateBy()
+    public function updatedBy()
     {
         return $this->belongsTo(User::class,'updated_by');
     }
