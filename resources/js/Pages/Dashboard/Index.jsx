@@ -137,7 +137,7 @@ function Index({ userCount, zonalCount, routeLineCount, utilityPollsCount,utilit
                               <td>{utilityPoll.longitude}</td>
                               <td>{utilityPoll.route_line.name}</td>
                               <td>{utilityPoll.created_by.name}</td>
-                              <td>{utilityPoll.updated_by.name || "null"}</td>
+                              <td>{utilityPoll.updated_by?.name || "null"}</td>
                               <td>
                                 {utilityPoll.status ? <span className="badge bg-success">Active</span> : <span className="badge bg-danger">InActive</span>}
                               </td>

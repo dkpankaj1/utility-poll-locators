@@ -18,7 +18,7 @@ class DashboardController extends Controller
         $zonalCount = Zonal::count();
         $routeLineCount = RouteLine::count();
         $utilityPollsCount = UtilityPoll::count();
-        $utilityPolls = UtilityPoll::latest()->take(10)->get();
+        $utilityPolls = UtilityPoll::latest()->with(['routeLine','createdBy','updatedBy'])->take(10)->get();
         return Inertia::render(
             'Dashboard/Index',
             [
