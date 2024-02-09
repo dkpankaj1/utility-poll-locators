@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ZonalResource extends JsonResource
+class RouteLineResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,9 @@ class ZonalResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'zonalId' => $this->zonal_id,
             'name' => $this->name,
             'description' => $this->description,
-            'routeLines' => new RouteLineCollection($this->routeLines)
         ];
     }
 }

@@ -3,7 +3,7 @@ import AppLayout from '../Layouts/AppLayout'
 import Breadcrumb from '../Layouts/Breadcrumb/Breadcrumb'
 import { Head, useForm } from '@inertiajs/react'
 
-function Create() {
+function Edit({ zonals, routeLines }) {
     const breadcrumb = [
         {
             label: "Dashboard",
@@ -11,8 +11,8 @@ function Create() {
             active: false
         },
         {
-            label: "Zonal",
-            url: '/zonals',
+            label: "Route Lines",
+            url: '/route-lines',
             active: false
         },
         {
@@ -21,19 +21,16 @@ function Create() {
         }
     ]
 
-    const { data, setData, post, processing, progress, errors,reset } = useForm({
-        name: '',
-        description: '',
-        status: false
+    const { data, setData, post, processing, errors } = useForm({
+        _method: "PUT",
+        name: routeLines.name,
+        zonal: routeLines.zonal_id,
+        description: routeLines.description
     })
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        post(route('zonals.store'),{
-            onSuccess : () => {
-                reset()
-            }
-        })
+        post(route('route-lines.update',routeLines))
     }
     return (
         <AppLayout>
@@ -45,8 +42,8 @@ function Create() {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-12 col-sm-6">
-                                {/* form */}
                                 <form className="my-5" onSubmit={handleSubmit}>
+
                                     <div className="row mb-4">
                                         <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Name</label>
                                         <div className="col-sm-8">
@@ -54,7 +51,22 @@ function Create() {
                                             {errors.name && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.name}</div>}
                                         </div>
                                     </div>
-                                    
+
+                                    <div className="row mb-4">
+                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Zonal</label>
+                                        <div className="col-sm-8">
+                                            <select className="form-select" defaultValue={data.zonal} onChange={(e) => setData('zonal', e.target.value)}>
+                                                <option value="">-- Select --</option>
+
+                                                {zonals.map((zone, index) => {
+                                                    return <option key={index} value={zone.id}>{zone.name}</option>
+                                                })}
+
+                                            </select>
+                                            {errors.zonal && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.zonal}</div>}
+                                        </div>
+                                    </div>
+
                                     <div className="row mb-4">
                                         <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Description</label>
                                         <div className="col-sm-8">
@@ -62,19 +74,11 @@ function Create() {
                                             {errors.description && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.description}</div>}
                                         </div>
                                     </div>
-                                    
-                                    <div className="row mb-4">
-                                        <label className="col-sm-4 col-form-label" htmlFor="example-hf-password">Status</label>
-                                        <div className="col-sm-8">
-                                            <input className="form-check-input" type="checkbox" defaultChecked={data.status} onChange={(e) => setData('status', e.target.checked)} />
-                                            {errors.status && <div id="login-username-error" className="invalid-feedback animated fadeIn d-block">{errors.status}</div>}
-                                        </div>
-                                    </div>
 
                                     <div className="row mb-4">
                                         <hr />
                                         <div className="col-sm-8">
-                                            <button type="submit" className="btn btn-primary px-4">{processing ? "Loading.." : "Create"}</button>
+                                            <button type="submit" className="btn btn-primary px-4">{processing ? "Loading.." : "Update"}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -87,4 +91,4 @@ function Create() {
     )
 }
 
-export default Create
+export default Edit

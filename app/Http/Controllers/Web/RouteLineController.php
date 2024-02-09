@@ -3,18 +3,21 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ZonalResource;
+use App\Models\RouteLine;
 use App\Models\Zonal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
-class ZonalController extends Controller
+class RouteLineController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $zonals = Zonal::all();
-        return Inertia::render('Zonal/Index',['zonals' => $zonals]);
+        return Inertia::render('RouteLines/Index', ['routeLines' => RouteLine::all()]);
     }
 
     /**
@@ -22,7 +25,7 @@ class ZonalController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Zonal/Create');
+        return Inertia::render('RouteLines/Create', ['zonals' => Zonal::all()]);
     }
 
     /**
@@ -31,28 +34,28 @@ class ZonalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required','unique:zonals,name'],
+            'name' => ['required', Rule::unique('route_lines', 'name')],
+            'zonal' => ['required'],
             'description' => ['required'],
-            'status' => ['required'],
         ]);
 
         try {
-            Zonal::create([
+            RouteLine::create([
+                'zonal_id' => $request->zonal,
                 'name' => $request->name,
+                'slug' => Str::slug($request->name),
                 'description' => $request->description,
-                'status' => $request->status
             ]);
-            return redirect()->back()->with('success', 'Zonal created successfully');
+            return redirect()->route('route-lines.index')->with('success', 'Route Lines created successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('danger', $e->getMessage());
         }
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Zonal $zonal)
+    public function show(RouteLine $route_line)
     {
         //
     }
@@ -60,29 +63,30 @@ class ZonalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Zonal $zonal)
+    public function edit(RouteLine $route_line)
     {
-        return Inertia::render('Zonal/Edit', ['zonal' => $zonal]);
+        return Inertia::render('RouteLines/Edit', ['zonals' => Zonal::all(),'routeLines' => $route_line]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Zonal $zonal)
+    public function update(Request $request, RouteLine $route_line)
     {
         $request->validate([
-            'name' => ['required', Rule::unique('zonals')->ignore($zonal->id)],
+            'name' => ['required', Rule::unique('route_lines', 'name')->ignore($route_line->id)],
+            'zonal' => ['required'],
             'description' => ['required'],
-            'status' => ['required'],
         ]);
 
         try {
-            $zonal->update([
+            $route_line->update([
+                'zonal_id' => $request->zonal,
                 'name' => $request->name,
+                'slug' => Str::slug($request->name),
                 'description' => $request->description,
-                'status' => $request->status
             ]);
-            return redirect()->back()->with('success', 'Zonal Update successfully');
+            return redirect()->route('route-lines.index')->with('success', 'Route Lines Update successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('danger', $e->getMessage());
         }
@@ -91,19 +95,9 @@ class ZonalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Zonal $zonal)
+    public function destroy(RouteLine $route_line)
     {
-        try {
-            $zonal->delete();
-            return redirect()->back()->with('success', 'Zonal Delete successfully');
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('danger', $th->getMessage());
-        }
+        //
     }
 
-    public function getRouteLine(Request $request)
-    {
-        $zonal = Zonal::findOrFail($request->zonal);
-        return new ZonalResource($zonal);
-    }
 }

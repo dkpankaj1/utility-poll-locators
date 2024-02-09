@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Zonal extends Model
+class RouteLine extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'zonal_id',
         'name',
+        'slug',
         'description',
-        'status',
     ];
-
-    public function routeLines()
+    public function zonal()
     {
-        return $this->hasMany(RouteLine::class);
+        return $this->belongsTo(Zonal::class);
     }
 }

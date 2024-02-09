@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\LoginController;
+use App\Http\Controllers\Web\RouteLineController;
 use App\Http\Controllers\Web\UserController;
+use App\Http\Controllers\Web\UtilityPollController;
 use App\Http\Controllers\Web\ZonalController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +30,12 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+    Route::resource('route-lines',RouteLineController::class);
+    Route::resource('utility-polls',UtilityPollController::class);
     Route::resource('users',UserController::class);
+
+    Route::get('zonals-get-route-lines',[ZonalController::class,'getRouteLine'])->name('zonals-get-route-lines');
     Route::resource('zonals',ZonalController::class);
+
     Route::post('logout',[LoginController::class,'destroy'])->name('logout');
 });
