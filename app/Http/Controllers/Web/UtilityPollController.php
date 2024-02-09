@@ -79,7 +79,7 @@ class UtilityPollController extends Controller
     public function edit(UtilityPoll $utilityPoll)
     {
         $zonals = Zonal::where('status',true)->get();
-        $utilityPoll = $utilityPoll->with(['routeLine','createdBy','updatedBy'])->first();
+        $utilityPoll = UtilityPoll::where('id',$utilityPoll->id)->with(['routeLine','createdBy','updatedBy'])->first();
         $zonalRoute = RouteLine::where('zonal_id',$utilityPoll->routeLine->zonal->id)->get();
         return Inertia::render('UtilityPolls/Edit',['zonals' => $zonals,'utilityPoll' => $utilityPoll,'zonalRoute' => $zonalRoute]);
     }
