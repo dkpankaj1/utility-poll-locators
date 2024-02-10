@@ -16,7 +16,12 @@ class RouteLineResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'zonalId' => $this->zonal_id,
+            'zonal' => [
+                'id' => $this->zonal->id,
+                'name' => $this->zonal->name,
+                'description' => $this->zonal->description,
+                'status' => $this->zonal->status,
+            ],
             'name' => $this->name,
             'description' => $this->description,
         ];

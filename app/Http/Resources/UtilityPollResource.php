@@ -15,16 +15,14 @@ class UtilityPollResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'title' => $this->title,
-            'landmarks' => $this->landmarks,
+            'id' => $this->id,
+            'pole' => $this->pole,
+            'line' => $this->line,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
             'description' => $this->description,
             'status' => $this->status,
-            'route_line_id' => $this->routeLine->name,
-            'created_by' => $this->createBy->name,
-            'updated_by' => $this->updateBy->name,
-
+            'route_line' => new RouteLineResource($this->routeLine),
         ];
     }
 }

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UtilityPollCollection;
-use App\Http\Resources\UtilityPollResource;
 use App\Models\RouteLine;
 use App\Models\UtilityPoll;
 use App\Models\Zonal;

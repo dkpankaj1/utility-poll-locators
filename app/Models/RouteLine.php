@@ -16,6 +16,6 @@ class RouteLine extends Model
     ];
     public function zonal()
     {
-        return $this->belongsTo(Zonal::class);
+        return $this->belongsTo(Zonal::class,'zonal_id');
     }
 }
