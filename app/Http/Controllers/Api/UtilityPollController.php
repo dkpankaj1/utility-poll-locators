@@ -88,6 +88,10 @@ class UtilityPollController extends Controller
     
     public function destroy(UtilityPoll $utilityPoll)
     {
-        //
+        try { 
+            return $this->sendSuccess('utility resource delete successfully',new UtilityPollResource($utilityPoll));
+         } catch (\Exception $e) {
+             return $this->sendError('error', ['error' => $e->getMessage()], 500);
+         }
     }
 }
