@@ -1,6 +1,6 @@
 import React from 'react'
 import GuestLayout from '../Layouts/GuestLayout'
-import { router, useForm } from '@inertiajs/react'
+import { Head, router, useForm } from '@inertiajs/react'
 
 function Login() {
     const { data, setData, post, processing, errors } = useForm({
@@ -14,6 +14,8 @@ function Login() {
 
     return (
         <GuestLayout>
+
+            <Head title='Login'/>
 
             <div className="mb-3 text-center">
                 <a className="link-fx fw-bold fs-1" href="index.html">

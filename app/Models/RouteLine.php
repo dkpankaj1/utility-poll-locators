@@ -18,4 +18,8 @@ class RouteLine extends Model
     {
         return $this->belongsTo(Zonal::class,'zonal_id');
     }
+    public function utilityPolls()
+    {
+        return $this->hasMany(UtilityPoll::class,'route_line_id','id');
+    }
 }

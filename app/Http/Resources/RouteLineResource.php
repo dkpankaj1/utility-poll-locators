@@ -24,6 +24,7 @@ class RouteLineResource extends JsonResource
             ],
             'name' => $this->name,
             'description' => $this->description,
+            'utilityPoll' => new UtilityPollCollection($this->utilityPolls)
         ];
     }
 }

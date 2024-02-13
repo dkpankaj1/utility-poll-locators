@@ -22,7 +22,17 @@ class UtilityPollResource extends JsonResource
             'longitude' => $this->longitude,
             'description' => $this->description,
             'status' => $this->status,
-            'route_line' => new RouteLineResource($this->routeLine),
+            'route_line' => [
+                'id' => $this->routeLine->id,
+                'zonal' => [
+                    'id' => $this->routeLine->zonal->id,
+                    'name' =>$this->routeLine->zonal->name,
+                    'description' => $this->routeLine->zonal->description,
+                    'status' =>$this->routeLine->zonal->status,
+                ],
+                'name' =>$this->routeLine->name,
+                'description' => $this->routeLine->description,
+            ]
         ];
     }
 }

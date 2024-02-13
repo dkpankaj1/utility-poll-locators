@@ -16,6 +16,6 @@ class Zonal extends Model
 
     public function routeLines()
     {
-        return $this->hasMany(RouteLine::class);
+        return $this->hasMany(RouteLine::class,'zonal_id','id');
     }
 }
