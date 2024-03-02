@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\RouteLine;
 use App\Models\Zonal;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,6 +15,11 @@ class ZonalSeeder extends Seeder
     public function run(): void
     {
         $zonals = [
+            [
+                'name' => "Default",
+                'description' => "Default",
+                'status' => true
+            ],
             [
                 'name' => "Central",
                 'description' => "Central",
@@ -112,6 +118,12 @@ class ZonalSeeder extends Seeder
             ];
 
          Zonal::insert($zonals);
+         RouteLine::create([
+            "zonal_id"=> 1,
+            "name"=> "Default",
+            "slug"=> "default",
+            "description"=> "default",
+         ]);
 
 
     }

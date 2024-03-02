@@ -134,11 +134,11 @@ function Edit({ zonals,utilityPoll,zonalRoute }) {
                                         <label className="col-sm-4 col-form-label" htmlFor="example-hf-email">Location</label>
                                         <div className="col-sm-8">
                                             <div className="row">
-                                                <div className="col-4">
-                                                    <input type="text" className="form-control" disabled={true} placeholder="latitude" value={data.latitude} />
+                                            <div className="col-4">
+                                                    <input type="text" className="form-control" onChange={(e) => setData('latitude', e.target.value)} placeholder="latitude" value={data.latitude} />
                                                 </div>
                                                 <div className="col-4">
-                                                    <input type="text" className="form-control" disabled={true} placeholder="longitude" value={data.longitude} />
+                                                    <input type="text" className="form-control" onChange={(e) => setData('longitude', e.target.value)} placeholder="longitude" value={data.longitude} />
                                                 </div>
                                                 <div className="col-4">
                                                     <button type='button' onClick={getLocation} className='btn btn-secondary'><i className="fa-solid fa-location-crosshairs"></i></button>

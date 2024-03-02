@@ -33,12 +33,12 @@ class UtilityPollController extends Controller
     {
         $data = [
             'pole' => $request->pole,
-            'line' => $request->line,
+            'line' => $request->line ?? "up-line",
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
-            'description' => $request->description,
-            'status' => $request->status,
-            'route_line_id' => $request->route_line_id,
+            'description' => $request->description ?? "no description",
+            'status' => $request->status ?? true,
+            'route_line_id' => $request->route_lines ??1,
             'created_by' => auth()->user()->id,
         ];
 

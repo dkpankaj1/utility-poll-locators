@@ -36,22 +36,22 @@ class UtilityPollController extends Controller
     {
         $request->validate([
             'pole' => ['required',Rule::unique('utility_polls','pole')],
-            'line' => ['required'],
+            // 'line' => ['required'],
             'latitude' => ['required'],
             'longitude' => ['required'],
-            'description' => ['required'],
-            'status' => ['required'],
-            'route_lines' => ['required'],
+            // 'description' => ['required'],
+            // 'status' => ['required'],
+            // 'route_lines' => ['required'],
         ]);
 
         $data = [
             'pole' => $request->pole,
-            'line' => $request->line,
+            'line' => $request->line ?? "up-line",
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
-            'description' => $request->description,
-            'status' => $request->status,
-            'route_line_id' => $request->route_lines,
+            'description' => $request->description ?? "no description",
+            'status' => $request->status ?? true,
+            'route_line_id' => $request->route_lines ??1,
             'created_by' => auth()->user()->id,
         ];
 

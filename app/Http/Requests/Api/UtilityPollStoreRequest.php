@@ -20,12 +20,12 @@ class UtilityPollStoreRequest extends FormRequest
         return [
 
             'pole' => ['required', Rule::unique('utility_polls', 'pole')],
-            'line' => ['required'],
+            // 'line' => ['required'],
             'latitude' => ['required'],
             'longitude' => ['required'],
-            'description' => ['required'],
-            'status' => ['required'],
-            'route_line_id' => ['required', Rule::exists('route_lines', 'id')],
+            // 'description' => ['required'],
+            // 'status' => ['required'],
+            // 'route_line_id' => ['required', Rule::exists('route_lines', 'id')],
         ];
     }
 
