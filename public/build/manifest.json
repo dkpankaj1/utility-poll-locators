@@ -1,0 +1,107 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-f0mNRiTD.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/fonts/fontawesome/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-4fTc_gEW.ttf",
+    "src": "resources/fonts/fontawesome/fa-brands-400.ttf"
+  },
+  "resources/fonts/fontawesome/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-dBtdVLXb.woff2",
+    "src": "resources/fonts/fontawesome/fa-brands-400.woff2"
+  },
+  "resources/fonts/fontawesome/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-R1y4wXhx.ttf",
+    "src": "resources/fonts/fontawesome/fa-regular-400.ttf"
+  },
+  "resources/fonts/fontawesome/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-dMPsq6FL.woff2",
+    "src": "resources/fonts/fontawesome/fa-regular-400.woff2"
+  },
+  "resources/fonts/fontawesome/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-Sy0MuDJS.ttf",
+    "src": "resources/fonts/fontawesome/fa-solid-900.ttf"
+  },
+  "resources/fonts/fontawesome/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-zzuwGR1u.woff2",
+    "src": "resources/fonts/fontawesome/fa-solid-900.woff2"
+  },
+  "resources/fonts/inter/inter-v13-latin-300.woff2": {
+    "file": "assets/inter-v13-latin-300-CHA_qmA3.woff2",
+    "src": "resources/fonts/inter/inter-v13-latin-300.woff2"
+  },
+  "resources/fonts/inter/inter-v13-latin-500.woff2": {
+    "file": "assets/inter-v13-latin-500-JFocBHQx.woff2",
+    "src": "resources/fonts/inter/inter-v13-latin-500.woff2"
+  },
+  "resources/fonts/inter/inter-v13-latin-600.woff2": {
+    "file": "assets/inter-v13-latin-600-dkrH7PHm.woff2",
+    "src": "resources/fonts/inter/inter-v13-latin-600.woff2"
+  },
+  "resources/fonts/inter/inter-v13-latin-700.woff2": {
+    "file": "assets/inter-v13-latin-700-ts3xWOyE.woff2",
+    "src": "resources/fonts/inter/inter-v13-latin-700.woff2"
+  },
+  "resources/fonts/inter/inter-v13-latin-800.woff2": {
+    "file": "assets/inter-v13-latin-800-JnU3jSsi.woff2",
+    "src": "resources/fonts/inter/inter-v13-latin-800.woff2"
+  },
+  "resources/fonts/inter/inter-v13-latin-900.woff2": {
+    "file": "assets/inter-v13-latin-900-q9Lx9Ocb.woff2",
+    "src": "resources/fonts/inter/inter-v13-latin-900.woff2"
+  },
+  "resources/fonts/inter/inter-v13-latin-regular.woff2": {
+    "file": "assets/inter-v13-latin-regular-U9R_j0_y.woff2",
+    "src": "resources/fonts/inter/inter-v13-latin-regular.woff2"
+  },
+  "resources/fonts/simple-line-icons/Simple-Line-Icons.eot": {
+    "file": "assets/Simple-Line-Icons-iipfnRkc.eot",
+    "src": "resources/fonts/simple-line-icons/Simple-Line-Icons.eot"
+  },
+  "resources/fonts/simple-line-icons/Simple-Line-Icons.svg": {
+    "file": "assets/Simple-Line-Icons-jV6fm1nb.svg",
+    "src": "resources/fonts/simple-line-icons/Simple-Line-Icons.svg"
+  },
+  "resources/fonts/simple-line-icons/Simple-Line-Icons.ttf": {
+    "file": "assets/Simple-Line-Icons-JlbkK3Ul.ttf",
+    "src": "resources/fonts/simple-line-icons/Simple-Line-Icons.ttf"
+  },
+  "resources/fonts/simple-line-icons/Simple-Line-Icons.woff": {
+    "file": "assets/Simple-Line-Icons-QIB9Pj7U.woff",
+    "src": "resources/fonts/simple-line-icons/Simple-Line-Icons.woff"
+  },
+  "resources/fonts/simple-line-icons/Simple-Line-Icons.woff2": {
+    "file": "assets/Simple-Line-Icons-9CqGxvru.woff2",
+    "src": "resources/fonts/simple-line-icons/Simple-Line-Icons.woff2"
+  },
+  "resources/js/app.jsx": {
+    "assets": [
+      "assets/inter-v13-latin-300-CHA_qmA3.woff2",
+      "assets/inter-v13-latin-regular-U9R_j0_y.woff2",
+      "assets/inter-v13-latin-500-JFocBHQx.woff2",
+      "assets/inter-v13-latin-600-dkrH7PHm.woff2",
+      "assets/inter-v13-latin-700-ts3xWOyE.woff2",
+      "assets/inter-v13-latin-800-JnU3jSsi.woff2",
+      "assets/inter-v13-latin-900-q9Lx9Ocb.woff2",
+      "assets/fa-regular-400-dMPsq6FL.woff2",
+      "assets/fa-regular-400-R1y4wXhx.ttf",
+      "assets/fa-solid-900-zzuwGR1u.woff2",
+      "assets/fa-solid-900-Sy0MuDJS.ttf",
+      "assets/fa-brands-400-dBtdVLXb.woff2",
+      "assets/fa-brands-400-4fTc_gEW.ttf",
+      "assets/Simple-Line-Icons-iipfnRkc.eot",
+      "assets/Simple-Line-Icons-9CqGxvru.woff2",
+      "assets/Simple-Line-Icons-JlbkK3Ul.ttf",
+      "assets/Simple-Line-Icons-QIB9Pj7U.woff",
+      "assets/Simple-Line-Icons-jV6fm1nb.svg"
+    ],
+    "css": [
+      "assets/app-2YtnNInb.css"
+    ],
+    "file": "assets/app-NuUdwvLn.js",
+    "isEntry": true,
+    "src": "resources/js/app.jsx"
+  }
+}
