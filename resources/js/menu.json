@@ -7,44 +7,7 @@
     {
         "label": "Utility Poll",
         "icon": "fa fa-diagram-project",
-        "sub": [
-            {
-                "label": "Add",
-                "url": "/utility-polls/create"
-            },
-            {
-                "label": "List",
-                "url": "/utility-polls"
-            }
-        ]
-    },
-    {
-        "label": "Route Lines",
-        "icon": "fa fa-route",
-        "sub": [
-            {
-                "label": "Add",
-                "url": "/route-lines/create"
-            },
-            {
-                "label": "List",
-                "url": "/route-lines"
-            }
-        ]
-    },
-    {
-        "label": "Zonal",
-        "icon": "fa fa-map",
-        "sub": [
-            {
-                "label": "Add",
-                "url": "/zonals/create"
-            },
-            {
-                "label": "List",
-                "url": "/zonals"
-            }
-        ]
+        "url": "/utility-polls"
     },
     {
         "label": "Users",

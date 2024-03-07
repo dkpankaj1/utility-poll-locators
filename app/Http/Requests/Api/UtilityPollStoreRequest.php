@@ -18,14 +18,9 @@ class UtilityPollStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-
-            'pole' => ['required', Rule::unique('utility_polls', 'pole')],
-            // 'line' => ['required'],
+            'pole_img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'latitude' => ['required'],
             'longitude' => ['required'],
-            // 'description' => ['required'],
-            // 'status' => ['required'],
-            // 'route_line_id' => ['required', Rule::exists('route_lines', 'id')],
         ];
     }
 

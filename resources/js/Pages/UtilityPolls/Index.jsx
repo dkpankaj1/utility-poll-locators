@@ -29,15 +29,13 @@ function Index({ utilityPolls }) {
                             <table className="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>Pole</th>
-                                        <th>Line</th>
+                                        <th>SR#</th>
                                         <th>Latitude</th>
                                         <th>Longitude</th>
-                                        <th>Route line</th>
                                         <th>Created by</th>
                                         <th>Updated by</th>
-                                        <th>Status</th>
-                                        <th className="text-center" style={{ width: "100px" }}>Actions</th>
+                                        <th>Created at</th>
+                                        <th>Updated at</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,18 +44,16 @@ function Index({ utilityPolls }) {
                                             return (
                                                 <tr key={index}>
                                                     <td className="fw-semibold">
-                                                        {utilityPoll.pole}
+                                                        {index}
                                                     </td>
-                                                    <td>{utilityPoll.line}</td>
                                                     <td>{utilityPoll.latitude}</td>
                                                     <td>{utilityPoll.longitude}</td>
                                                     <td>{utilityPoll.route_line.name}</td>
                                                     <td>{utilityPoll.created_by.name}</td>
                                                     <td>{utilityPoll.updated_by?.name || "null"}</td>
-                                                    <td>
-                                                    {utilityPoll.status ? <span className="badge bg-success">Active</span>  : <span className="badge bg-danger">InActive</span> }
-                                                    </td>
-                                                    <td className="text-center">
+                                                    <td>{utilityPoll.created_at || "null"}</td>
+                                                    <td>{utilityPoll.updated_at || "null"}</td>                                                    
+                                                    {/* <td className="text-center">
                                                         <div className="btn-group">
                                                             <Link href={route('utility-polls.edit', utilityPoll)} type="button" className="btn btn-sm btn-alt-secondary">
                                                                 <i className="fa fa-pencil-alt"></i>
@@ -66,7 +62,7 @@ function Index({ utilityPolls }) {
                                                                 <i className="fa fa-times"></i>
                                                             </Link>
                                                         </div>
-                                                    </td>
+                                                    </td> */}
                                                 </tr>
                                             )
                                         })

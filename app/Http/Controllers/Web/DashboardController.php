@@ -14,19 +14,13 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $userCount = User::count();
-        $zonalCount = Zonal::count();
-        $routeLineCount = RouteLine::count();
-        $utilityPollsCount = UtilityPoll::count();
-        $utilityPolls = UtilityPoll::latest()->with(['routeLine','createdBy','updatedBy'])->take(10)->get();
+
         return Inertia::render(
             'Dashboard/Index',
             [
-                'userCount' => $userCount,
-                'zonalCount' => $zonalCount,
-                'routeLineCount' => $routeLineCount,
-                'utilityPollsCount' => $utilityPollsCount,
-                'utilityPolls' => $utilityPolls,
+                'userCount' => User::count(),
+                'utilityPollsCount' => UtilityPoll::count(),
+                'utilityPolls' =>UtilityPoll::latest()->with(['createdBy','updatedBy'])->take(10)->get(),
             ]
         );
     }

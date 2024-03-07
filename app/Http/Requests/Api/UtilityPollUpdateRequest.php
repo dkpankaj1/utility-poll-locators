@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests\Api;
 
-use App\Models\UtilityPoll;
 use App\Traits\HttpResponses;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class UtilityPollUpdateRequest extends FormRequest
 {
@@ -18,13 +16,9 @@ class UtilityPollUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'pole' => ['required', Rule::unique(UtilityPoll::class,'pole')->ignore($this->utility_poll)],
-            'line' => ['required'],
+            'pole_img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'latitude' => ['required'],
-            'longitude' => ['required'],
-            'description' => ['required'],
-            'status' => ['required'],
-            'route_line_id' => ['required', Rule::exists('route_lines', 'id')],
+            'longitude' => ['required']
         ];
     }
 
@@ -32,4 +26,5 @@ class UtilityPollUpdateRequest extends FormRequest
     {
         return $this->sendHttpResponseException('validation error.', $validator->errors());
     }
+    
 }

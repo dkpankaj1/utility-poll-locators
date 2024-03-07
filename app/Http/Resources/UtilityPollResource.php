@@ -16,23 +16,9 @@ class UtilityPollResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'pole' => $this->pole,
-            'line' => $this->line,
+            'pole_img' => asset($this->pole_img),
             'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'description' => $this->description,
-            'status' => $this->status,
-            'route_line' => [
-                'id' => $this->routeLine->id,
-                'zonal' => [
-                    'id' => $this->routeLine->zonal->id,
-                    'name' =>$this->routeLine->zonal->name,
-                    'description' => $this->routeLine->zonal->description,
-                    'status' =>$this->routeLine->zonal->status,
-                ],
-                'name' =>$this->routeLine->name,
-                'description' => $this->routeLine->description,
-            ]
+            'longitude' => $this->longitude
         ];
     }
 }
